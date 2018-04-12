@@ -1,17 +1,9 @@
-﻿生成启动时间为 2018/3/30 16:46:34。
+﻿生成启动时间为 2018/4/12 14:21:48。
      1>项目“C:\Users\lenovo\Documents\Visual Studio 2013\Projects\mouse_proj\mouse_proj\mouse_proj.vcxproj”在节点 2 上(Build 个目标)。
-     1>ResourceCompile:
-         C:\Program Files (x86)\Windows Kits\8.1\bin\x86\rc.exe /D NDEBUG /D _UNICODE /D UNICODE /D _AFXDLL /l"0x0804" /IRelease\ /nologo /fo"Release\mouse_proj.res" mouse_proj.rc 
-       Link:
-         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\lenovo\Documents\Visual Studio 2013\Projects\mouse_proj\Release\mouse_proj.exe" /INCREMENTAL:NO /NOLOGO /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /manifestinput:"C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\Include\Manifest\dpiaware.manifest" /DEBUG /PDB:"C:\Users\lenovo\Documents\Visual Studio 2013\Projects\mouse_proj\Release\mouse_proj.pdb" /SUBSYSTEM:WINDOWS /OPT:REF /OPT:ICF /LTCG /TLBID:1 /ENTRY:"wWinMainCRTStartup" /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\lenovo\Documents\Visual Studio 2013\Projects\mouse_proj\Release\mouse_proj.lib" /MACHINE:X86 /SAFESEH Release\mouse_proj.res
-         Release\mouse_proj.obj
-         Release\mouse_projDlg.obj
-         Release\stdafx.obj
-         正在生成代码
-         已完成代码的生成
+     1>Link:
          mouse_proj.vcxproj -> C:\Users\lenovo\Documents\Visual Studio 2013\Projects\mouse_proj\Release\mouse_proj.exe
      1>已完成生成项目“C:\Users\lenovo\Documents\Visual Studio 2013\Projects\mouse_proj\mouse_proj\mouse_proj.vcxproj”(Build 个目标)的操作。
 
 生成成功。
 
-已用时间 00:00:02.54
+已用时间 00:00:00.20

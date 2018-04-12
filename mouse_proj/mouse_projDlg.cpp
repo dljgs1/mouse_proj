@@ -98,23 +98,18 @@ DWORD GetProcessIDByName(WCHAR* pName)
 }
 
 LRESULT CALLBACK LowLevelMouseProc(INT nCode, WPARAM wParam, LPARAM lParam){
-	CPoint  _mousepoint;
 	MSLLHOOKSTRUCT *pkbhs = (MSLLHOOKSTRUCT *)lParam;
-	if ((nCode == HC_ACTION || nCode==HC_NOREMOVE) && start_log){//鼠标左击
+	if ((nCode == HC_ACTION || nCode==HC_NOREMOVE) && start_log){
 		HWND curhwnd = ::GetForegroundWindow();
 		HWND dsthwnd = ::FindWindowA(NULL, "KeyLogTest");
 		FILE*fp;
-		if (curhwnd == dsthwnd){
-			fopen_s(&fp, "debug.txt", "a");
-			//fprintf(fp, "%d,%d, \n", curhwnd, dsthwnd);
-			fprintf(fp, "%d,\n", wParam);
-			fclose(fp);
-		}
 		if (wParam == WM_KEYUP || wParam==WM_SYSKEYUP){/* || wParam == WM_LBUTTONUP*/
-			/*
-			auto curid = GetThreadId(curhwnd);
-			auto dstid = GetProcessIDByName(procname);*/
-
+			if (curhwnd == dsthwnd){
+				fopen_s(&fp, "debug.txt", "a");
+				//fprintf(fp, "%d,%d, \n", curhwnd, dsthwnd);
+				fprintf(fp, "%d,\n", wParam);
+				fclose(fp);
+			}
 			if (dsthwnd && curhwnd == dsthwnd){
 				FILE*fp;
 				BYTE ks[256];
@@ -134,20 +129,6 @@ LRESULT CALLBACK LowLevelMouseProc(INT nCode, WPARAM wParam, LPARAM lParam){
 				}
 
 				fclose(fp);
-				//if (wParam == VK_SPACE){
-				//	fprintf(fp, " ");
-				//}
-				//else if (wParam == VK_RETURN){
-				//	fprintf(fp, "\n");
-
-				//}
-				//else{
-				//	ToAscii(wParam, scan, ks, &w, 0);
-				//	char ch = char(w);
-				//	//ch = MapVirtualKey(wParam, 2);
-				//	fwrite(&ch, sizeof(char), 1, fp);
-				//	fclose(fp);
-				//}
 			}	
 		}
 	}
@@ -330,54 +311,8 @@ void Cmouse_projDlg::OnBnClickedCancel()
 
 
 #include<fstream>
-//执行文件
-#include<vector>
-class mouse_act{
-	HWND hWnd;
-	std::vector<int>x;
-	std::vector<int>y;
-	std::vector<int>wait;
-	int count = 0;
-public:
-	mouse_act(HWND wd) :hWnd(wd){ ; }
-	mouse_act(){ hWnd = NULL; }
-	void add(int _x, int _y, int _wait = -1){
-		x.push_back(_x);
-		y.push_back(_y);
-		wait.push_back(_wait);
-	}
-	void play(){
-		if (!hWnd)return;
-		LPARAM lParam = MAKELPARAM(x[count], y[count]);
-		::SendMessage(this->hWnd, WM_LBUTTONDOWN, MK_LBUTTON, lParam);
-		Sleep(250);
-		::SendMessage(this->hWnd, WM_LBUTTONUP, MK_LBUTTON, lParam);
-		Sleep(250);
-		if (wait[count] > 0){
-			Sleep(wait[count]);
-			count++;
-		}
-		else{
-			count = 0;
-		}
-	}
-	void clear(){
-		hWnd = NULL;
-	}
-	bool isNULL(){
-		return hWnd == NULL;
-	}
-};
 
-mouse_act act_player;
 bool play_flag = false;
-DWORD WINAPI PlayMouseAction(LPVOID lpParamter){
-	while(play_flag){
-		act_player.play();
-	}
-	return 0;
-}
-
 
 void Cmouse_projDlg::OnBnClickedButton1(){
 	using namespace std;
